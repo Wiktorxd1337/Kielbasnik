@@ -54,18 +54,12 @@ app.post('/create-checkout-session', async (req, res) => {
             type: 'fixed_amount',
             fixed_amount: {
               amount: 2000, // 20 PLN (kwota w groszach)
-              currency: 'pln', // Waluta w PLN
+              currency: 'pln',
             },
-            display_name: 'Dostawa kurierem', // Opcja 1: Dostawa kurierem
+            display_name: 'Dostawa kurierem',
             delivery_estimate: {
-              minimum: {
-                unit: 'business_day',
-                value: 3, // Minimalny czas dostawy: 3 dni robocze
-              },
-              maximum: {
-                unit: 'business_day',
-                value: 5, // Maksymalny czas dostawy: 5 dni roboczych
-              },
+              minimum: { unit: 'business_day', value: 3 },
+              maximum: { unit: 'business_day', value: 5 },
             },
           },
         },
@@ -74,18 +68,12 @@ app.post('/create-checkout-session', async (req, res) => {
             type: 'fixed_amount',
             fixed_amount: {
               amount: 2300, // 23 PLN (kwota w groszach)
-              currency: 'pln', // Waluta w PLN
+              currency: 'pln',
             },
-            display_name: 'Dostawa za pobraniem', // Opcja 2: Dostawa za pobraniem
+            display_name: 'Dostawa za pobraniem',
             delivery_estimate: {
-              minimum: {
-                unit: 'business_day',
-                value: 3, // Minimalny czas dostawy: 3 dni robocze
-              },
-              maximum: {
-                unit: 'business_day',
-                value: 5, // Maksymalny czas dostawy: 5 dni roboczych
-              },
+              minimum: { unit: 'business_day', value: 3 },
+              maximum: { unit: 'business_day', value: 5 },
             },
           },
         },
@@ -94,44 +82,18 @@ app.post('/create-checkout-session', async (req, res) => {
             type: 'fixed_amount',
             fixed_amount: {
               amount: 1800, // 18 PLN (kwota w groszach)
-              currency: 'pln', // Waluta w PLN
+              currency: 'pln',
             },
-            display_name: 'Dostawa do paczkomatu', // Opcja 3: Dostawa do paczkomatu
+            display_name: 'Dostawa do paczkomatu',
             delivery_estimate: {
-              minimum: {
-                unit: 'business_day',
-                value: 2, // Minimalny czas dostawy: 2 dni robocze
-              },
-              maximum: {
-                unit: 'business_day',
-                value: 4, // Maksymalny czas dostawy: 4 dni robocze
-              },
-            },
-          },
-        },
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: {
-              amount: 0, // Darmowy odbiór osobisty
-              currency: 'pln', // Waluta w PLN
-            },
-            display_name: 'Odbiór osobisty', // Opcja 4: Odbiór osobisty
-            delivery_estimate: {
-              minimum: {
-                unit: 'business_day',
-                value: 1, // Minimalny czas: 1 dzień roboczy
-              },
-              maximum: {
-                unit: 'business_day',
-                value: 1, // Maksymalny czas: 1 dzień roboczy
-              },
+              minimum: { unit: 'business_day', value: 2 },
+              maximum: { unit: 'business_day', value: 4 },
             },
           },
         },
       ],
     });
-
+    
     // Zwróć zarówno id, jak i url sesji
     res.json({ id: session.id, url: session.url });
   } catch (error) {
