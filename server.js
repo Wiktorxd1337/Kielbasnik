@@ -67,20 +67,6 @@ app.post('/create-checkout-session', async (req, res) => {
           shipping_rate_data: {
             type: 'fixed_amount',
             fixed_amount: {
-              amount: 2300, // 23 PLN (kwota w groszach)
-              currency: 'pln',
-            },
-            display_name: 'Dostawa za pobraniem',
-            delivery_estimate: {
-              minimum: { unit: 'business_day', value: 3 },
-              maximum: { unit: 'business_day', value: 5 },
-            },
-          },
-        },
-        {
-          shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: {
               amount: 1800, // 18 PLN (kwota w groszach)
               currency: 'pln',
             },
@@ -88,6 +74,20 @@ app.post('/create-checkout-session', async (req, res) => {
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 2 },
               maximum: { unit: 'business_day', value: 4 },
+            },
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 0, // bezpłatny odbiór osobisty
+              currency: 'pln',
+            },
+            display_name: 'Odbiór osobisty',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 1 },
+              maximum: { unit: 'business_day', value: 1 },
             },
           },
         },
